@@ -1,3 +1,3 @@
 export interface ServiceCommand {
-    execute(...data: any[]): Promise<any>
+    execute(...data: any[]): Promise<any>;
 }
