@@ -9,15 +9,28 @@ export class Company extends BaseEntity {
 
     @Column()
     name: string;
-
+    
     @Column()
     phone: string;
-
-    @Column()
-    cnpj: string
-
+    
     @Column()
     email: string
+
+    // SE FOR UNIQUE, TEM QUE TER VALOR, MAS NEM TODA EMPRESA TEM CNPJ
+    @Column({ nullable: true })
+    cnpj: string
+
+    @Column({ nullable: true })
+    address: string
+    
+    @Column({ nullable: true })
+    district: string
+
+    @Column({ nullable: true })
+    number: string
+
+    @Column({ nullable: true })
+    zipCode: string
 
     @OneToMany( () => Client, client => client.company )
     client: Client[]
