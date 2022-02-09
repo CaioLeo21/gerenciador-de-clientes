@@ -1,12 +1,16 @@
+import { InjectRepository } from "@nestjs/typeorm";
 import { ServiceCommand } from "src/interfaces/ServiceCommand";
-import { Repository } from "typeorm";
+import { SaveCompanyDTO } from "../dto/SaveCompanyDTO";
 import { Company } from "../entity/Company.entity";
+import { SaveCompanyRepository } from "../repository/SaveCompanyRepository";
 
+export class SaveCompany implements ServiceCommand {
+    constructor(
+        @InjectRepository(SaveCompanyRepository)
+        private saveCompanyRepository: SaveCompanyRepository
+    ){};
 
-export class saveCompany extends Repository<Company> implements ServiceCommand {
-    
-    
-    async execute(): Promise<any> {
-        
-    }
-}
+    async execute(companyDTO : SaveCompanyDTO): Promise<Company> {
+        return await this.saveCompanyRepository.execute(companyDTO);
+    };
+};
