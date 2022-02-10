@@ -6,11 +6,11 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);  
 
-  app.enableCors()
+  app.enableCors();
 
   app.useGlobalPipes(new ValidationPipe({
     transform: true
-  }))
+  }));
 
   const config = new DocumentBuilder()
   .setTitle('Gestão de comércio - APIs')
@@ -25,9 +25,9 @@ async function bootstrap() {
   try {
     await app.listen(3000);
 
-    console.log(`Server running on port 3000!`)
+    console.log(`Server running on port 3000!`);
   } catch (error) {
-    console.log(`Error on running server: `, error)
-  }
-}
+    console.log(`Error on running server: `, error);
+  };
+};
 bootstrap();
